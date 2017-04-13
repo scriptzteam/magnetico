@@ -102,7 +102,7 @@ def search_torrents():
             "    SELECT torrent_id, rank(matchinfo(fts_torrents, 'pcnxal')) AS rank "
             "    FROM fts_torrents "
             "    WHERE name MATCH ? "
-            "    ORDER BY rank ASC"
+            "    ORDER BY torrent_id DESC"
             "    LIMIT 20 OFFSET ?"
             ") AS ranktable ON torrents.id=ranktable.torrent_id;",
             (search, 20 * page)
